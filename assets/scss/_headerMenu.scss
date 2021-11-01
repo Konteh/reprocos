@@ -35,9 +35,12 @@
             .header-left{
                 .logo {
                     display: none !important;
+                    max-width:32px;
+           max-height: 32px;   
                 }
                 .logo2 {
                     display: block;
+           
                 }
             }
         }
@@ -50,9 +53,12 @@
         align-items: center;
         .logo {
             position: absolute;
+            max-width:32px;
+            max-height: 32px;
             z-index: 2;
             top: 0;
             left: 0;
+           
             img{
                 @media #{$laptop}{
                     width: 165px;
@@ -78,7 +84,9 @@
             top: 10px;
             left: 15px;
             display: none;
+           
             img{
+               
                 @media #{$md}{
                     width: 53px;
                 }
