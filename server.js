@@ -1,50 +1,50 @@
-const express = require("express");
-const path = require("path");
-const nodemailer = require("nodemailer");
-const dotenv = require("dotenv");
+// const express = require("express");
+// const path = require("path");
+// const nodemailer = require("nodemailer");
+// const dotenv = require("dotenv");
 
-dotenv.config();
+// dotenv.config();
 
-let initialPath = path.join(__dirname, "public");
-let app = express();
+// let initialPath = path.join(__dirname, "public");
+// let app = express();
 
-app.use(express.static(initialPath));
-app.use(express.json());
+// app.use(express.static(initialPath));
+// app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(initialPath, "index.html"));
-});
+// app.get("/", (req, res) => {
+//   res.sendFile(path.join(initialPath, "index.html"));
+// });
 
-app.listen(3000, () => {
-  console.log("listening.....");
-});
+// app.listen(3000, () => {
+//   console.log("listening.....");
+// });
 
-app.post("/mail", (req, res) => {
-  const { names, subject, email, message } = req.body;
+// app.post("/mail", (req, res) => {
+//   const { names, subject, email, message } = req.body;
 
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL,
-      pass: process.env.PASSWORD,
-    },
-  });
+//   const transporter = nodemailer.createTransport({
+//     service: "gmail",
+//     auth: {
+//       user: process.env.EMAIL,
+//       pass: process.env.PASSWORD,
+//     },
+//   });
 
-  const mailOptions = {
-    from: req.body.email,
-    to: "Brahim@repressco.com",
-    subject: `message from ${req.body.email}: ${req.body.subject}`,
-    text: `First name: ${names}, \nSubject: ${subject}, \nEmail: ${email}, \nMessage: ${message}`,
-  };
+//   const mailOptions = {
+//     from: req.body.email,
+//     to: "Brahim@repressco.com",
+//     subject: `message from ${req.body.email}: ${req.body.subject}`,
+//     text: `First name: ${names}, \nSubject: ${subject}, \nEmail: ${email}, \nMessage: ${message}`,
+//   };
 
-  transporter.sendMail(mailOptions, (err, result) => {
-    if (err) {
-      console.log(err);
-      res.json("opps! it seems like some error occured plz. try again.");
-    } else {
-      res.json(
-        "thanks for e-mailing me. I will reply to you within 2 working days"
-      );
-    }
-  });
-});
+//   transporter.sendMail(mailOptions, (err, result) => {
+//     if (err) {
+//       console.log(err);
+//       res.json("opps! it seems like some error occured plz. try again.");
+//     } else {
+//       res.json(
+//         "thanks for e-mailing me. I will reply to you within 2 working days"
+//       );
+//     }
+//   });
+// });
